@@ -1,0 +1,25 @@
+{
+  "name": "@saas-rbac/api",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@saas-rbac/auth": "workspace:*"
+  },
+  "devDependencies": {
+    "@saas-rbac/eslint-config": "workspace:*",
+    "@saas-rbac/prettier": "workspace:*",
+    "@saas-rbac/tsconfig": "workspace:*",
+    "@types/node": "^20.12.7",
+    "tsx": "^4.7.2"
+  },
+  "prettier": "@saas-rbac/prettier",
+  "eslintConfig": {
+    "extends": [
+      "@saas-rbac/eslint-config/library"
+    ]
+  }
+}
