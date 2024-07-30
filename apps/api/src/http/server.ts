@@ -36,6 +36,6 @@ app.register(fastifyCors)
 
 app.register(createAccount)
 
-app.listen({ port: 3000 }, () => {
-  console.log('Server is running')
+app.listen({ port: 3333 }, () => {
+  console.log('Server is running 🚀')
 })
