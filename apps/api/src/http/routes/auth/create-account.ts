@@ -29,9 +29,7 @@ export async function createAccount(app: FastifyInstance) {
       })
 
       if (userWithSameEmail) {
-        return reply.status(400).send({
-          error: 'User with same email already exists',
-        })
+        throw new Error('User with same email already exists')
       }
 
       const [, domain] = email.split('@')
