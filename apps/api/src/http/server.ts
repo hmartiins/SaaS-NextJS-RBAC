@@ -2,6 +2,7 @@ import fastifyCors from '@fastify/cors'
 import fastifyJWT from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUI from '@fastify/swagger-ui'
+import { env } from '@saas-rbac/env'
 import { fastify } from 'fastify'
 import {
   jsonSchemaTransform,
@@ -40,7 +41,7 @@ app.register(fastifySwaggerUI, {
 })
 
 app.register(fastifyJWT, {
-  secret: process.env.JWT_SECRET!,
+  secret: env.JWT_SECRET,
 })
 
 app.register(fastifyCors)
@@ -52,6 +53,6 @@ app.register(requestPasswordRecover)
 app.register(resetPassword)
 app.register(authenticateWithGithub)
 
-app.listen({ port: 3333 }, () => {
+app.listen({ port: env.SERVER_PORT }, () => {
   console.log('Server is running 🚀')
 })
