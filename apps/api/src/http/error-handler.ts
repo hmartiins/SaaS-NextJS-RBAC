@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 import { ZodError } from 'zod'
 
-import { BadRequestError, UnauthorizedRequestError } from './_errors'
+import { BadRequestError, UnauthorizedRequestError } from './routes/_errors'
 
 type FastifyErrorHandler = FastifyInstance['errorHandler']
 

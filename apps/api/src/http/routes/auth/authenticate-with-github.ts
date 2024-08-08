@@ -3,7 +3,7 @@ import { FastifyInstance } from 'fastify'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
 
-import { BadRequestError } from '@/http/_errors'
+import { BadRequestError } from '@/http/routes/_errors'
 import { prisma } from '@/lib/prisma'
 
 export async function authenticateWithGithub(app: FastifyInstance) {

@@ -3,7 +3,7 @@ import { FastifyInstance } from 'fastify'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
 
-import { UnauthorizedRequestError } from '@/http/_errors'
+import { UnauthorizedRequestError } from '@/http/routes/_errors'
 import { prisma } from '@/lib/prisma'
 
 export async function resetPassword(app: FastifyInstance) {
