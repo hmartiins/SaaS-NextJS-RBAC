@@ -1,3 +1,6 @@
+export * from './authenticate-with-github'
 export * from './authenticate-with-password'
 export * from './create-account'
 export * from './get-profile'
+export * from './request-password-recovery'
+export * from './reset-password'
