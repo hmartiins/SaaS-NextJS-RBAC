@@ -29,6 +29,9 @@ import {
   transferOrganization,
   updateOrganization,
 } from './routes'
+import { getMembers } from './routes/members/get-members'
+import { removeMember } from './routes/members/remove-member'
+import { updateMember } from './routes/members/update-member'
 import { getProject } from './routes/projects/get-project'
 import { getProjects } from './routes/projects/get-projects'
 import { updateProject } from './routes/projects/update-project'
@@ -91,6 +94,10 @@ app.register(deleteProject)
 app.register(getProject)
 app.register(getProjects)
 app.register(updateProject)
+
+app.register(getMembers)
+app.register(updateMember)
+app.register(removeMember)
 
 app.listen({ port: env.SERVER_PORT }, () => {
   console.log('Server is running 🚀')
