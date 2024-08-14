@@ -11,7 +11,7 @@ export async function removeMember(app: FastifyInstance) {
   app
     .withTypeProvider<ZodTypeProvider>()
     .register(auth)
-    .put(
+    .delete(
       '/organizations/:slug/members/:memberId',
       {
         schema: {
