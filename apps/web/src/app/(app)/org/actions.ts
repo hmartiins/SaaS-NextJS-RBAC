@@ -1,9 +1,12 @@
 'use server'
 
 import { HTTPError } from 'ky'
+import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
 
+import { getCurrentOrg } from '@/auth/auth'
 import { createOrganization } from '@/http/create-organization'
+import { updateOrganization } from '@/http/update-organization'
 
 const createOrganizationSchema = z
   .object({
@@ -47,6 +50,8 @@ const createOrganizationSchema = z
     },
   )
 
+export type OrganizationSchema = z.infer<typeof createOrganizationSchema>
+
 export async function createOrganizationAction(data: FormData) {
   const result = createOrganizationSchema.safeParse(Object.fromEntries(data))
 
@@ -68,6 +73,60 @@ export async function createOrganizationAction(data: FormData) {
       domain,
       shouldAttachUsersByDomain,
     })
+
+    revalidateTag('organizations')
+  } catch (error) {
+    if (error instanceof HTTPError) {
+      const { message } = await error.response.json()
+
+      return {
+        success: false,
+        message,
+        errors: null,
+      }
+    }
+
+    console.error(error)
+
+    return {
+      success: false,
+      message: 'An unexpected error occurred. Please, try again later.',
+      errors: null,
+    }
+  }
+
+  return {
+    success: true,
+    message: 'Successfully saved an organization',
+    errors: null,
+  }
+}
+
+export async function updateOrganizationAction(data: FormData) {
+  const currentOrg = getCurrentOrg()
+  const result = createOrganizationSchema.safeParse(Object.fromEntries(data))
+
+  if (!result.success) {
+    const errors = result.error.flatten().fieldErrors
+
+    return {
+      success: false,
+      message: null,
+      errors,
+    }
+  }
+
+  const { name, domain, shouldAttachUsersByDomain } = result.data
+
+  try {
+    await updateOrganization({
+      org: currentOrg!,
+      name,
+      domain,
+      shouldAttachUsersByDomain,
+    })
+
+    revalidateTag('organizations')
   } catch (error) {
     if (error instanceof HTTPError) {
       const { message } = await error.response.json()
