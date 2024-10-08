@@ -9,7 +9,7 @@ import { BadRequestError } from '../_errors'
 
 export async function getInvite(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
-    '/invites/:inviteId',
+    '/invite/:inviteId',
     {
       schema: {
         tags: ['invites'],
