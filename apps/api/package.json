@@ -2,7 +2,7 @@
   "name": "@saas-rbac/api",
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc",
+    "build": "pnpm tsup src",
     "start": "node dist/http/server.js",
     "dev": "pnpm env:load tsx watch src/http/server.ts",
     "env:load": "dotenv -e ../../.env --",
