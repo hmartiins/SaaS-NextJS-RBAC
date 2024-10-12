@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
+    "start": "node dist/http/server.js",
     "dev": "pnpm env:load tsx watch src/http/server.ts",
     "env:load": "dotenv -e ../../.env --",
     "db:migrate": "pnpm env:load prisma migrate dev",
@@ -19,6 +20,7 @@
     "fastify": "^4.26.2",
     "fastify-plugin": "^4.5.1",
     "fastify-type-provider-zod": "^1.1.9",
+    "tsup": "^8.3.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
