@@ -77,7 +77,7 @@ export async function createOrganizationAction(data: FormData) {
     revalidateTag('organizations')
   } catch (error) {
     if (error instanceof HTTPError) {
-      const { message } = await error.response.json()
+      const { message } = await error.response.json<{ message: string }>()
 
       return {
         success: false,
@@ -129,7 +129,7 @@ export async function updateOrganizationAction(data: FormData) {
     revalidateTag('organizations')
   } catch (error) {
     if (error instanceof HTTPError) {
-      const { message } = await error.response.json()
+      const { message } = await error.response.json<{ message: string }>()
 
       return {
         success: false,
