@@ -6,7 +6,7 @@ import {
 } from '@casl/ability'
 import { z } from 'zod'
 
-import { User } from './models'
+import { User } from './models/user'
 import { permissions } from './permissions'
 import {
   billingSubject,
@@ -16,7 +16,9 @@ import {
   userSubject,
 } from './subjects'
 
-export * from './models'
+export * from './models/organization'
+export * from './models/project'
+export * from './models/user'
 export * from './roles'
 
 const appAbilities = z.union([
