@@ -1,5 +1,4 @@
-import { Role } from '@prisma/client'
-import { defineAbilityFor, userSchema } from '@saas-rbac/auth'
+import { defineAbilityFor, type Role, userSchema } from '@saas-rbac/auth'
 
 export function getUserPermissions(userId: string, role: Role) {
   const authUser = userSchema.parse({
