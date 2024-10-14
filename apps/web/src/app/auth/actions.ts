@@ -1,6 +1,6 @@
 'use server'
 
-import { env } from '@saas-rbac/env'
+import { env } from '@saas/env'
 import { redirect } from 'next/navigation'
 
 export async function signInWithGithub() {

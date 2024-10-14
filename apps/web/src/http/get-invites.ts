@@ -1,4 +1,4 @@
-import { Role } from '@saas-rbac/auth'
+import { Role } from '@saas/auth'
 
 import { api } from './api-client'
 

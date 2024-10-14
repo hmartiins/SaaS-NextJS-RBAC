@@ -1,6 +1,6 @@
 'use client'
 
-import { Role } from '@saas-rbac/auth'
+import { Role } from '@saas/auth'
 import { ComponentProps } from 'react'
 
 import {

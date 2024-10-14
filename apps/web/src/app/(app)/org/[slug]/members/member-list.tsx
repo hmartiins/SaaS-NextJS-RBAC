@@ -1,5 +1,5 @@
 import { AvatarFallback } from '@radix-ui/react-avatar'
-import { organizationSchema } from '@saas-rbac/auth'
+import { organizationSchema } from '@saas/auth'
 import { ArrowLeftRight, Crown, UserMinus } from 'lucide-react'
 import Image from 'next/image'
 

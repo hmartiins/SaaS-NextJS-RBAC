@@ -1,4 +1,4 @@
-import { defineAbilityFor } from '@saas-rbac/auth'
+import { defineAbilityFor } from '@saas/auth'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 

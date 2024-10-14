@@ -1,5 +1,5 @@
 {
-  "name": "@saas-rbac/web",
+  "name": "@saas/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -19,7 +19,7 @@
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
-    "@saas-rbac/auth": "workspace:*",
+    "@saas/auth": "workspace:*",
     "@tanstack/react-query": "^5.59.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -36,10 +36,10 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@saas-rbac/env": "workspace:*",
-    "@saas-rbac/eslint-config": "workspace:*",
-    "@saas-rbac/prettier": "workspace:*",
-    "@saas-rbac/tsconfig": "workspace:*",
+    "@saas/env": "workspace:*",
+    "@saas/eslint-config": "workspace:*",
+    "@saas/prettier": "workspace:*",
+    "@saas/tsconfig": "workspace:*",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -48,10 +48,10 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
-  "prettier": "@saas-rbac/prettier",
+  "prettier": "@saas/prettier",
   "eslintConfig": {
     "extends": [
-      "@saas-rbac/eslint-config/next"
+      "@saas/eslint-config/next"
     ]
   }
 }
