@@ -12,7 +12,10 @@ export const env = createEnv({
     GITHUB_OAUTH_CLIENT_SECRET: z.string(),
     GITHUB_OAUTH_REDIRECT_URI: z.string().url(),
   },
-  client: {},
+  client: {
+    NEXT_PUBLIC_DATADOG_APPLICATION_ID: z.string(),
+    NEXT_PUBLIC_DATADOG_CLIENT_TOKEN: z.string(),
+  },
   shared: {
     NEXT_PUBLIC_API_URL: z.string().url(),
   },
@@ -27,6 +30,11 @@ export const env = createEnv({
     GITHUB_OAUTH_REDIRECT_URI: process.env.GITHUB_OAUTH_REDIRECT_URI,
 
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+
+    NEXT_PUBLIC_DATADOG_APPLICATION_ID:
+      process.env.NEXT_PUBLIC_DATADOG_APPLICATION_ID,
+    NEXT_PUBLIC_DATADOG_CLIENT_TOKEN:
+      process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN,
   },
   emptyStringAsUndefined: true,
 })

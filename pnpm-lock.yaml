@@ -84,6 +84,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@datadog/browser-rum':
+        specifier: ^5.28.1
+        version: 5.28.1
       '@radix-ui/react-avatar':
         specifier: ^1.1.0
         version: 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@19.0.0-rc-f994737d14-20240522)(react@19.0.0-rc-f994737d14-20240522)
@@ -277,6 +280,28 @@ packages:
     resolution: {integrity: sha512-e+Vgrehd1/lzOSwSqKHtmJ6kmIuZbGBlM2LBS5IuYGGKmVHuhUuyh3XgTn1VIw9+TO4gqU+uptvxfIRBUEdJuw==}
     dependencies:
       '@ucast/mongo2js': 1.3.4
+    dev: false
+
+  /@datadog/browser-core@5.28.1:
+    resolution: {integrity: sha512-teBNd2pynPWPThsjDqLzzk4mbxOVqQ5MkbPbIhg+1Sl6idsGmpapDp6GSMP8YyToayjgMuApel2GYp0T05GOeA==}
+    dev: false
+
+  /@datadog/browser-rum-core@5.28.1:
+    resolution: {integrity: sha512-O6K3/5lGw3uEv9csQm5V/qr16/kE5vVDfFmI0xB/A8wTdUE48intbUh7d7rIbDxYmD2DWUgv4eP30O05LR4pnw==}
+    dependencies:
+      '@datadog/browser-core': 5.28.1
+    dev: false
+
+  /@datadog/browser-rum@5.28.1:
+    resolution: {integrity: sha512-Q6vtTd3bcVLriWNxdSjx7MTNYTO2Jv43KO4x5DUdd2nGPPuvWawsccYK3UzD+V6XGtq5nFeAx9IAFHr7vdBQxQ==}
+    peerDependencies:
+      '@datadog/browser-logs': 5.28.1
+    peerDependenciesMeta:
+      '@datadog/browser-logs':
+        optional: true
+    dependencies:
+      '@datadog/browser-core': 5.28.1
+      '@datadog/browser-rum-core': 5.28.1
     dev: false
 
   /@emnapi/runtime@1.2.0:
