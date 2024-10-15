@@ -16,6 +16,10 @@ datadogRum.init({
   trackResources: true,
   trackLongTasks: true,
   defaultPrivacyLevel: 'allow',
+
+  allowedTracingUrls: [
+    (url) => url.startsWith('https://next-saas-api.hmartins.dev'),
+  ],
 })
 
 export default function DatadogInit() {
