@@ -101,6 +101,8 @@ export function SignInForm() {
           Sign in with GitHub
         </Button>
       </form>
+
+      <Button onClick={() => console.error('Erro datadog!')}>Gerar Erro</Button>
     </div>
   )
 }
