@@ -6,6 +6,14 @@ import Image from 'next/image'
 import { ability, getCurrentOrg } from '@/auth/auth'
 import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table'
 import { getMembers } from '@/http/get-members'
 import { getMembership } from '@/http/get-membership'
@@ -93,23 +101,49 @@ export default async function MembersList() {
                       }
                     />
 
-                    {/* TODO: implement modal confirmation and toast */}
-                    {permissions?.can('delete', 'User') && (
-                      <form action={removeMemberAction.bind(null, member.id)}>
+                    <Dialog>
+                      <DialogTrigger
+                        disabled={
+                          member.userId === membership?.userId ||
+                          member.userId === organization?.ownerId
+                        }
+                      >
                         <Button
                           disabled={
                             member.userId === membership?.userId ||
                             member.userId === organization?.ownerId
                           }
-                          type="submit"
                           size={'sm'}
                           variant={'destructive'}
                         >
                           <UserMinus className="mr-2 size-4" />
                           Remove
                         </Button>
-                      </form>
-                    )}
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>Are you absolutely sure?</DialogTitle>
+                          <DialogDescription>
+                            This action cannot be undone. This will permanently
+                            delete this account and remove your data from our
+                            servers.
+                            <form
+                              action={removeMemberAction.bind(null, member.id)}
+                            >
+                              <Button
+                                type="submit"
+                                size={'sm'}
+                                variant={'destructive'}
+                                className="mt-4"
+                              >
+                                <UserMinus className="mr-2 size-4" />
+                                Remove
+                              </Button>
+                            </form>
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </TableCell>
               </TableRow>
