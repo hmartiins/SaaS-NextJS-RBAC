@@ -12,6 +12,7 @@ export const env = createEnv({
     GITHUB_OAUTH_CLIENT_SECRET: z.string(),
     GITHUB_OAUTH_REDIRECT_URI: z.string().url(),
 
+    FRONT_URL: z.string().url(),
     RESEND_API_KEY: z.string(),
   },
   client: {
@@ -38,6 +39,7 @@ export const env = createEnv({
     NEXT_PUBLIC_DATADOG_CLIENT_TOKEN:
       process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN,
 
+    FRONT_URL: process.env.FRONT_URL,
     RESEND_API_KEY: process.env.RESEND_API_KEY,
   },
   emptyStringAsUndefined: true,
