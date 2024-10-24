@@ -2,8 +2,6 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 
-import DatadogInit from '@/lib/datadog'
-
 import { Providers } from './providers'
 
 export const metadata: Metadata = {
@@ -19,10 +17,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="pt-BR">
       <body>
-        <Providers>
-          <DatadogInit />
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
