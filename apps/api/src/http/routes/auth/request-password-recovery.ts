@@ -48,7 +48,7 @@ export async function requestPasswordRecover(app: FastifyInstance) {
         html: forgotPasswordEmailTemplate({
           name: userFromEmail.name!,
           avatarUrl: userFromEmail.avatarUrl,
-          passwordRecoveryLink: `${process.env.FRONT_URL}/auth/password/recovery/${code}`,
+          passwordRecoveryLink: `${process.env.FRONT_URL}/auth/reset-password?code=${code}`,
         }),
       })
 
