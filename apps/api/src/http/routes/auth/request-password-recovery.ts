@@ -3,6 +3,8 @@ import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
 
 import { prisma } from '@/lib/prisma'
+import { sendEmail } from '@/lib/resend'
+import { forgotPasswordEmailTemplate } from '@/utils/email-templates/forgot-password'
 
 export async function requestPasswordRecover(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -40,9 +42,15 @@ export async function requestPasswordRecover(app: FastifyInstance) {
         },
       })
 
-      // TODO: Send email with code
-
-      console.log('Password recovery code:', code)
+      await sendEmail({
+        to: ['hmartins224@gmail.com'],
+        subject: 'Password recovery',
+        html: forgotPasswordEmailTemplate({
+          name: userFromEmail.name!,
+          avatarUrl: userFromEmail.avatarUrl,
+          passwordRecoveryLink: `${process.env.NEXT_PUBLIC_API_URL}auth/password/recovery/${code}`,
+        }),
+      })
 
       return reply.status(201).send()
     },
