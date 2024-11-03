@@ -12,15 +12,23 @@ import { Separator } from '@/components/ui/separator'
 import { acceptInvite } from '@/http/accept-invite'
 import { getInvite } from '@/http/get-invite'
 
-interface InvitePageProps {
-  params: {
-    id: string
-  }
-}
+type Params = Promise<{ id: string }>
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
 
 dayjs.extend(relativeTime)
 
-export default async function InvitePage({ params }: InvitePageProps) {
+export async function generateMetadata(props: {
+  params: Params
+  searchParams: SearchParams
+}) {
+  await props.params
+}
+
+export default async function InvitePage(props: {
+  params: Params
+  searchParams: SearchParams
+}) {
+  const params = await props.params
   const inviteId = params.id
 
   const { invite } = await getInvite(inviteId)
