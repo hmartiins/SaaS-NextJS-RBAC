@@ -23,7 +23,7 @@ import { removeMemberAction } from './actions'
 import { UpdateMemberRoleSelect } from './update-member-role-select'
 
 export default async function MembersList() {
-  const currentOrg = getCurrentOrg()
+  const currentOrg = await getCurrentOrg()
 
   const permissions = await ability()
 

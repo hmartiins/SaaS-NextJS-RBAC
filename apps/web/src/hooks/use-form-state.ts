@@ -38,7 +38,9 @@ export function useFormState(
       setFormState(result)
     })
 
-    requestFormReset(form)
+    startTransition(() => {
+      requestFormReset(form)
+    })
   }
 
   return [formState, handlSubmitAction, isPending] as const

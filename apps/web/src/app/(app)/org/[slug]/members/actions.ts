@@ -20,7 +20,7 @@ const inviteSchema = z.object({
 
 export async function createInviteAction(data: FormData) {
   const result = inviteSchema.safeParse(Object.fromEntries(data))
-  const currentOrg = getCurrentOrg()!
+  const currentOrg = await getCurrentOrg()
 
   if (!result.success) {
     const errors = result.error.flatten().fieldErrors
@@ -36,7 +36,7 @@ export async function createInviteAction(data: FormData) {
 
   try {
     await createInvite({
-      org: currentOrg,
+      org: currentOrg!,
       email,
       role,
     })
@@ -70,7 +70,7 @@ export async function createInviteAction(data: FormData) {
 }
 
 export async function removeMemberAction(memberId: string) {
-  const currentOrg = getCurrentOrg()
+  const currentOrg = await getCurrentOrg()
 
   await removeMember({
     org: currentOrg!,
@@ -81,7 +81,7 @@ export async function removeMemberAction(memberId: string) {
 }
 
 export async function updateMemberAction(memberId: string, role: Role) {
-  const currentOrg = getCurrentOrg()
+  const currentOrg = await getCurrentOrg()
 
   await updateMember({
     org: currentOrg!,
@@ -93,7 +93,7 @@ export async function updateMemberAction(memberId: string, role: Role) {
 }
 
 export async function revokeInviteAction(inviteId: string) {
-  const currentOrg = getCurrentOrg()
+  const currentOrg = await getCurrentOrg()
 
   await revokeInvite({
     org: currentOrg!,
