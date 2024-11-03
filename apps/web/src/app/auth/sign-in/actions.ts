@@ -1,7 +1,7 @@
 'use server'
 
 import { HTTPError } from 'ky'
-import { cookies } from 'next/headers'
+import { cookies as serverCookies } from 'next/headers'
 import { z } from 'zod'
 
 import { acceptInvite } from '@/http/accept-invite'
@@ -15,6 +15,8 @@ const signInSchema = z.object({
 })
 
 export async function signInWithEmailAndPassword(data: FormData) {
+  const cookies = await serverCookies()
+
   const result = signInSchema.safeParse(Object.fromEntries(data))
 
   if (!result.success) {
@@ -35,17 +37,17 @@ export async function signInWithEmailAndPassword(data: FormData) {
       password,
     })
 
-    cookies().set('token', token, {
+    cookies.set('token', token, {
       path: '/',
       maxAge: 60 * 60 * 24 * 7, // 7 days
     })
 
-    const inviteId = cookies().get('inviteId')?.value
+    const inviteId = cookies.get('inviteId')?.value
 
     if (inviteId) {
       try {
         await acceptInvite(inviteId)
-        cookies().delete('inviteId')
+        cookies.delete('inviteId')
       } catch {}
     }
   } catch (error) {
